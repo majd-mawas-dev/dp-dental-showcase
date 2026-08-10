@@ -11,18 +11,19 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { getProduct, products, type Product } from "./data/products";
+import { appPath, assetPath, currentAppPath } from "./utils/paths";
 
 function navigate(path: string) {
-  window.history.pushState({}, "", path);
+  window.history.pushState({}, "", appPath(path));
   window.dispatchEvent(new PopStateEvent("popstate"));
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function useRoute() {
-  const [path, setPath] = useState(window.location.pathname);
+  const [path, setPath] = useState(currentAppPath());
 
   useEffect(() => {
-    const update = () => setPath(window.location.pathname);
+    const update = () => setPath(currentAppPath());
     window.addEventListener("popstate", update);
     return () => window.removeEventListener("popstate", update);
   }, []);
@@ -75,8 +76,8 @@ function Header() {
 
   return (
     <header className={`site-header ${scrolled || open ? "is-solid" : ""}`}>
-      <a className="brand" href="/" onClick={(event) => (event.preventDefault(), navigate("/"))}>
-        <img src="/assets/brand/dp-logo-transparent.png" alt="DP Dental logo" />
+      <a className="brand" href={appPath("/")} onClick={(event) => (event.preventDefault(), navigate("/"))}>
+        <img src={assetPath("assets/brand/dp-logo-transparent.png")} alt="DP Dental logo" />
       </a>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {links.map(([label, href]) => (
@@ -100,7 +101,7 @@ function Header() {
       <div className={`mobile-nav-backdrop ${open ? "is-open" : ""}`} onClick={() => setOpen(false)} aria-hidden="true" />
       <aside className={`mobile-panel ${open ? "is-open" : ""}`} id="mobile-navigation" aria-hidden={!open}>
         <div className="mobile-panel-top">
-          <img src="/assets/brand/dp-logo-transparent.png" alt="" aria-hidden="true" />
+          <img src={assetPath("assets/brand/dp-logo-transparent.png")} alt="" aria-hidden="true" />
           <button className="icon-button" aria-label="Close navigation" onClick={() => setOpen(false)}>
             <X size={22} />
           </button>
@@ -153,7 +154,7 @@ function ProductCard({ product }: { product: Product }) {
         <div className="card-footer">
           <span>{product.model}</span>
           <a
-            href={`/products/${product.slug}`}
+            href={appPath(`/products/${product.slug}`)}
             onClick={(event) => (event.preventDefault(), navigate(`/products/${product.slug}`))}
           >
             Explore details <ArrowRight size={16} />
@@ -189,7 +190,7 @@ function HomePage() {
         </div>
         <div className="hero-product" aria-label="Featured DP Dental product">
           <div className="hero-product-stage">
-            <img src="/assets/products/a-45-main-cutout.png" alt="A-45 DP Dental handpiece" />
+            <img src={assetPath("assets/products/a-45-main-cutout.png")} alt="A-45 DP Dental handpiece" />
             <span className="hero-spec top">45-degree head</span>
             <span className="hero-spec bottom">Triple water spray</span>
           </div>
@@ -211,7 +212,7 @@ function HomePage() {
 
       <section className="featured" style={{ "--accent": featured.accent } as React.CSSProperties}>
         <div className="featured-image">
-          <img src="/assets/products/a-45-main-cutout.png" alt="A-45 side profile product image" loading="lazy" />
+          <img src={assetPath("assets/products/a-45-main-cutout.png")} alt="A-45 side profile product image" loading="lazy" />
         </div>
         <div className="featured-copy">
           <p className="eyebrow">Featured Product</p>
@@ -331,7 +332,7 @@ function ProductPage({ product }: { product: Product }) {
     <>
       <section className="detail-hero" style={{ "--accent": product.accent } as React.CSSProperties}>
         <div className="breadcrumb">
-          <a href="/" onClick={(event) => (event.preventDefault(), navigate("/"))}>
+          <a href={appPath("/")} onClick={(event) => (event.preventDefault(), navigate("/"))}>
             Products
           </a>
           <span>/</span>
@@ -437,13 +438,13 @@ export default function App() {
       <Header />
       <main>{path.startsWith("/products/") ? product ? <ProductPage product={product} /> : <NotFound /> : <HomePage />}</main>
       <footer className="footer">
-        <img src="/assets/brand/dp-logo-transparent.png" alt="DP Dental logo" />
+        <img src={assetPath("assets/brand/dp-logo-transparent.png")} alt="DP Dental logo" />
         <p>Dental Quality You Can Trust</p>
         <nav aria-label="Footer navigation">
           {products.map((productItem) => (
             <a
               key={productItem.slug}
-              href={`/products/${productItem.slug}`}
+              href={appPath(`/products/${productItem.slug}`)}
               onClick={(event) => (event.preventDefault(), navigate(`/products/${productItem.slug}`))}
             >
               {productItem.name}

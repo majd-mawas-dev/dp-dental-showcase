@@ -1,3 +1,5 @@
+import { assetPath } from "../utils/paths";
+
 export type ProductImage = {
   src: string;
   alt: string;
@@ -19,7 +21,7 @@ export type Product = {
   relatedProducts: string[];
 };
 
-const img = (name: string) => `/assets/products/${name}`;
+const img = (name: string) => assetPath(`assets/products/${name}`);
 
 export const products: Product[] = [
   {
