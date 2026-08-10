@@ -98,7 +98,7 @@ a {
 .desktop-nav a,
 .mobile-nav a,
 .footer a {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0;
   text-decoration: none;
@@ -455,7 +455,7 @@ section {
 
 .product-media {
   align-items: center;
-  aspect-ratio: 1.28 / 1;
+  /* aspect-ratio: 1.28 / 1; */
   background:
     radial-gradient(ellipse at 50% 48%, color-mix(in srgb, var(--accent), transparent 82%) 0%, transparent 44%),
     radial-gradient(ellipse at 50% 62%, rgba(18, 22, 27, 0.1) 0%, transparent 52%),
@@ -1238,7 +1238,7 @@ section {
   }
 
   .product-media {
-    aspect-ratio: 1.24 / 1;
+    /* aspect-ratio: 1.24 / 1; */
     min-height: 260px;
   }
 
