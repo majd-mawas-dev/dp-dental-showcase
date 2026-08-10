@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [new-dp]
+    branches: [dp-showcase-refresh]
 
 permissions:
   contents: read
