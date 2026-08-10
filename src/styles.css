@@ -1,7 +1,9 @@
 :root {
   color-scheme: light;
   font-family:
-    Inter, Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
   --ink: #0a0b0c;
   --graphite: #151719;
   --graphite-2: #202327;
@@ -97,7 +99,7 @@ a {
 .mobile-nav a,
 .footer a {
   font-size: 0.82rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0;
   text-decoration: none;
   text-transform: uppercase;
@@ -133,7 +135,7 @@ a {
   align-items: center;
   border-radius: var(--radius);
   display: inline-flex;
-  font-weight: 850;
+  font-weight: 700;
   gap: 10px;
   justify-content: center;
   min-height: 48px;
@@ -246,7 +248,7 @@ main {
 .model {
   color: var(--accent, var(--gold));
   font-size: 0.78rem;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0;
   margin: 0 0 12px;
   text-transform: uppercase;
@@ -283,7 +285,7 @@ h3 {
 .hero-line {
   color: #f5f0e7;
   font-size: clamp(1.15rem, 1.55vw, 1.55rem);
-  font-weight: 550;
+  font-weight: 500;
 }
 
 .hero-copy > p:last-of-type,
@@ -363,7 +365,7 @@ h3 {
   border-radius: 999px;
   color: #fff;
   font-size: 0.78rem;
-  font-weight: 850;
+  font-weight: 700;
   padding: 8px 12px;
   position: absolute;
   z-index: 2;
@@ -407,7 +409,7 @@ section {
 .section-heading p {
   color: var(--gold);
   font-size: 0.78rem;
-  font-weight: 900;
+  font-weight: 800;
   margin: 0;
   text-transform: uppercase;
 }
@@ -566,7 +568,7 @@ section {
 .card-footer > span {
   color: #171a1d;
   font-size: 0.82rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -575,7 +577,7 @@ section {
   align-items: center;
   color: var(--accent);
   display: inline-flex;
-  font-weight: 900;
+  font-weight: 700;
   gap: 8px;
   position: relative;
   text-decoration: none;
@@ -587,7 +589,7 @@ section {
   border-radius: 999px;
   color: #34383e;
   font-size: 0.82rem;
-  font-weight: 850;
+  font-weight: 700;
   padding: 7px 10px;
 }
 
@@ -707,7 +709,7 @@ section {
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.86);
   font-size: clamp(0.96rem, 1.2vw, 1.08rem);
-  font-weight: 800;
+  font-weight: 600;
   padding: 18px 0 18px 22px;
 }
 
@@ -744,7 +746,7 @@ section {
 
 .breadcrumb a {
   color: #fff;
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -930,12 +932,12 @@ section {
 .spec-grid dt {
   color: var(--muted);
   font-size: 0.78rem;
-  font-weight: 900;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
 .spec-grid dd {
-  font-weight: 850;
+  font-weight: 700;
   margin: 0;
 }
 
@@ -1112,7 +1114,7 @@ section {
     border-radius: var(--radius);
     color: #101010;
     display: flex;
-    font-weight: 900;
+    font-weight: 700;
     gap: 10px;
     justify-content: center;
     min-height: 52px;
