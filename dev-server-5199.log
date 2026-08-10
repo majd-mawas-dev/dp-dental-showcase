@@ -1,0 +1,16 @@
+
+> dp-dental-showcase@1.0.0 dev
+> vite --host 127.0.0.1 --host 0.0.0.0 --port 5199
+
+[31merror when starting dev server:
+Error: listen EACCES: permission denied 0.0.0.0:5199
+    at Server.setupListenHandle [as _listen2] (node:net:1918:21)
+    at listenInCluster (node:net:1997:12)
+    at node:net:2206:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EACCES',
+  errno: -4092,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 5199
+}[39m
