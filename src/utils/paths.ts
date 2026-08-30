@@ -10,14 +10,16 @@ export function appPath(path: string) {
 }
 
 export function currentAppPath() {
+  const search = window.location.search;
   if (!basePath) {
-    return window.location.pathname;
+    return `${window.location.pathname}${search}`;
   }
 
   const path = window.location.pathname;
   if (path === basePath) {
-    return "/";
+    return `/${search}`;
   }
 
-  return path.startsWith(`${basePath}/`) ? path.slice(basePath.length) : path;
+  const appRoute = path.startsWith(`${basePath}/`) ? path.slice(basePath.length) : path;
+  return `${appRoute}${search}`;
 }
