@@ -20,7 +20,7 @@ import { useEffect, useMemo, useState } from "react";
 import { getProduct, products, type Product } from "./data/products";
 import { appPath, assetPath, currentAppPath } from "./utils/paths";
 
-const contactPhone = "+8613250247401";
+// const contactPhone = "+8613250247401";
 const contactEmail = "info@dp-dental.com";
 const contactEmail2 = "support@dp-dental.com";
 const contactLocation = "Tianhe District, Guangzhou, Guangdong, China";
@@ -28,7 +28,7 @@ const whatsappNumber = "8613250247401";
 const formspreeEndpoint = "https://formspree.io/f/meaqjgry";
 const productGroups = [
   {
-    title: "Handpieces",
+    title: "High-speed handpieces",
     copy: "High speed air turbines for visibility, access, spray control, and efficient clinical handling.",
     slugs: ["a-ring", "a-mup", "a-pro", "a-45"],
   },
@@ -41,6 +41,11 @@ const productGroups = [
     title: "Endo Activator",
     copy: "Activation technology for irrigation, sealer delivery, and controlled endodontic workflow support.",
     slugs: ["a1-pro"],
+  },
+  {
+    title: "Implant Locator",
+    copy: "A compact locating device designed to support implant identification during clinical workflows.",
+    slugs: ["implant-locator"],
   },
 ];
 
@@ -431,11 +436,11 @@ function HomePage() {
         <div className="hero-product" aria-label="Featured DP Dental product">
           <div className="hero-product-stage">
             <img
-              src={assetPath("assets/products/a-45-main-cutout.png")}
-              alt="A-45 DP Dental handpiece"
+              src={featured.images[0].src}
+              alt={featured.images[0].alt}
             />
-            <span className="hero-spec top">45-degree head</span>
-            <span className="hero-spec bottom">Triple water spray</span>
+            <span className="hero-spec top">Brushless motor</span>
+            <span className="hero-spec bottom">Multiple operating modes</span>
           </div>
         </div>
       </section>
@@ -567,7 +572,7 @@ function ProductsPage({ selectedCategoryId }: { selectedCategoryId?: string }) {
               {selectedCategoryId ? "Category" : "Categories"}
             </span>
             <span>
-              <strong>3</strong>
+              <strong>4</strong>
               Workflows
             </span>
           </div>
@@ -877,7 +882,7 @@ function ProductPage({ product }: { product: Product }) {
         <div>
           <SectionHeading
             kicker="Core Features"
-            title={`${product.name} clinical advantages`}
+            title={`${product.name}`}
           />
           <div className="feature-list">
             {product.features.map((feature) => (
@@ -1005,10 +1010,6 @@ function CTASection({ selectedProduct }: { selectedProduct?: Product }) {
           <a href={`mailto:${contactEmail2}`}>
             <Mail size={18} />
             {contactEmail2}
-          </a>
-          <a rel="noreferrer" style={{ cursor: "default" }}>
-            <MessageCircle size={18} />
-            {contactPhone}
           </a>
           <div>
             <MapPin size={18} />

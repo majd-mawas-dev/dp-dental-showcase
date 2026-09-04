@@ -129,7 +129,7 @@ export const products: Product[] = [
       // ["Model", "A-300"],
       ["Torque", "23W"],
       ["Head Size", "11.3 x H13.8 mm"],
-      ["Spray", "3 water spray"],
+      ["Spray", "4 water spray"],
       ["Air pressure", "0.2-0.2 Mpa"],
       ["Bearings", "NSK ceramic bearings"],
       ["Maximum rotation speed", "350,000-420,000 RPM"],
@@ -276,10 +276,25 @@ export const products: Product[] = [
     description:
       "A compact endo activator designed for high-precision irrigation activation, sealer delivery, stable brushless motor performance, and clear mode control.",
     images: [
-      // TODO: Replace with supplied A1 pro Endo Activator photography when the final assets are added.
       {
-        src: img("a-pro-led-cutout.png"),
-        alt: "Representative DP dental device image for A1 pro Endo Activator",
+        src: img("a1-pro-charging-base.png"),
+        alt: "A1 pro Endo Activator resting on its charging base",
+      },
+      {
+        src: img("a1-pro-angle.png"),
+        alt: "A1 pro Endo Activator shown at an angled side view",
+      },
+      {
+        src: img("a1-pro-upright.png"),
+        alt: "A1 pro Endo Activator shown upright",
+      },
+      {
+        src: img("a1-pro-front.png"),
+        alt: "Front view of the A1 pro Endo Activator and LCD display",
+      },
+      {
+        src: img("a1-pro-tips.png"),
+        alt: "Red and white accessory tips for the A1 pro Endo Activator",
       },
     ],
     features: [
@@ -304,6 +319,44 @@ export const products: Product[] = [
       ["Warranty", "1 year"],
     ],
     relatedProducts: ["a-pro", "a-ring", "a-45"],
+  },
+  {
+    slug: "implant-locator",
+    name: "Implant Locator",
+    category: "Implant Locator",
+    accent: "#173d83",
+    tagline: "Compact support for implant identification.",
+    description:
+      "A cordless handheld implant locator with a slim angled head, simple one-button control, visual status indicator, and dedicated charging base.",
+    images: [
+      {
+        src: img("implant-locator-charging-base.png"),
+        alt: "DP Implant Locator resting on its charging base",
+      },
+      {
+        src: img("implant-locator-angle.png"),
+        alt: "DP Implant Locator shown at an angled view with status light",
+      },
+      {
+        src: img("implant-locator-front.png"),
+        alt: "Front view of the DP Implant Locator",
+      },
+    ],
+    features: [
+      "Cordless handheld design",
+      "Slim angled head for clinical access",
+      "Simple one-button operation",
+      "Visual status indicator",
+      "Dedicated charging base",
+    ],
+    specifications: [
+      ["Product type", "Implant Locator"],
+      ["Format", "Cordless handheld device"],
+      ["Controls", "Single-button operation"],
+      ["Indicator", "Visual status light"],
+      ["Charging", "Dedicated charging base"],
+    ],
+    relatedProducts: ["a1-pro", "a-pro", "a-ring"],
   },
 ];
 
