@@ -399,6 +399,22 @@ function ProductCard({ product }: { product: Product }) {
 
 function HomePage() {
   const featured = products.find((product) => product.slug === "a1-pro")!;
+  const [heroSlide, setHeroSlide] = useState(0);
+  const heroProduct = products[heroSlide % products.length];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setHeroSlide((slide) => (slide + 1) % products.length);
+    }, 3500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const moveHeroSlide = (delta: number) => {
+    setHeroSlide(
+      (slide) => (slide + delta + products.length) % products.length,
+    );
+  };
 
   return (
     <>
@@ -426,7 +442,8 @@ function HomePage() {
               className="button secondary"
               href="#contact"
               onClick={(event) => (
-                event.preventDefault(), scrollToSection("#contact")
+                event.preventDefault(),
+                scrollToSection("#contact")
               )}
             >
               Contact Us
@@ -436,11 +453,36 @@ function HomePage() {
         <div className="hero-product" aria-label="Featured DP Dental product">
           <div className="hero-product-stage">
             <img
-              src={featured.images[0].src}
-              alt={featured.images[0].alt}
+              key={heroProduct.slug}
+              src={heroProduct.images[0].src}
+              alt={heroProduct.images[0].alt}
             />
-            <span className="hero-spec top">Brushless motor</span>
-            <span className="hero-spec bottom">Multiple operating modes</span>
+            <span className="hero-spec bottom">{heroProduct.name}</span>
+            <button
+              className="hero-slider-control previous"
+              aria-label="Show previous product"
+              onClick={() => moveHeroSlide(-1)}
+            >
+              <ChevronLeft size={22} />
+            </button>
+            <button
+              className="hero-slider-control next"
+              aria-label="Show next product"
+              onClick={() => moveHeroSlide(1)}
+            >
+              <ChevronRight size={22} />
+            </button>
+            <div className="hero-slider-dots" aria-label="Homepage product slider">
+              {products.map((product, index) => (
+                <button
+                  key={product.slug}
+                  className={index === heroSlide ? "is-active" : ""}
+                  aria-label={`Show ${product.name}`}
+                  aria-current={index === heroSlide ? "true" : undefined}
+                  onClick={() => setHeroSlide(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -880,10 +922,7 @@ function ProductPage({ product }: { product: Product }) {
 
       <section className="detail-section">
         <div>
-          <SectionHeading
-            kicker="Core Features"
-            title={`${product.name}`}
-          />
+          <SectionHeading kicker="Core Features" title={`${product.name}`} />
           <div className="feature-list">
             {product.features.map((feature) => (
               <span key={feature}>{feature}</span>

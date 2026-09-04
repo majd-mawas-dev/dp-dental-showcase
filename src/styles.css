@@ -101,6 +101,16 @@ input {
   width: auto;
 }
 
+.brand img {
+  transition: filter 180ms ease;
+}
+
+.brand:hover img,
+.brand:focus-visible img {
+  filter: brightness(0) saturate(100%) invert(75%) sepia(42%) saturate(650%)
+    hue-rotate(358deg) brightness(91%) contrast(89%);
+}
+
 .desktop-nav {
   display: flex;
   gap: clamp(18px, 2.4vw, 34px);
@@ -466,23 +476,9 @@ h3 {
   position: relative;
 }
 
-.hero-product-stage::before {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.18),
-    transparent
-  );
-  content: "";
-  height: 1px;
-  left: 8%;
-  position: absolute;
-  right: 8%;
-  top: 50%;
-}
-
 .hero-product-stage img {
   --hero-product-scale: 1.2;
+  animation: hero-product-reveal 420ms ease both;
   filter: drop-shadow(0 34px 38px rgba(0, 0, 0, 0.48));
   max-height: 360px;
   max-width: 94%;
@@ -491,6 +487,74 @@ h3 {
   transform: rotate(-5deg) scale(var(--hero-product-scale));
   width: 100%;
   z-index: 1;
+}
+
+@keyframes hero-product-reveal {
+  from {
+    opacity: 0;
+    transform: rotate(-5deg) scale(calc(var(--hero-product-scale) * 0.94));
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(-5deg) scale(var(--hero-product-scale));
+  }
+}
+
+.hero-slider-control {
+  align-items: center;
+  background: rgba(6, 7, 8, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  z-index: 3;
+}
+
+.hero-slider-control:hover {
+  background: var(--gold);
+  color: #090a0b;
+}
+
+.hero-slider-control.previous {
+  left: 16px;
+}
+
+.hero-slider-control.next {
+  right: 16px;
+}
+
+.hero-slider-dots {
+  bottom: 18px;
+  display: flex;
+  gap: 7px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.hero-slider-dots button {
+  background: rgba(255, 255, 255, 0.34);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  height: 7px;
+  padding: 0;
+  transition: background 180ms ease, width 180ms ease;
+  width: 7px;
+}
+
+.hero-slider-dots button.is-active {
+  background: var(--gold);
+  width: 24px;
 }
 
 .hero-spec {

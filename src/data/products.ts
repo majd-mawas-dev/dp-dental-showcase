@@ -324,7 +324,7 @@ export const products: Product[] = [
     slug: "implant-locator",
     name: "Implant Locator",
     category: "Implant Locator",
-    accent: "#173d83",
+    accent: "#40e0d0",
     tagline: "Compact support for implant identification.",
     description:
       "A cordless handheld implant locator with a slim angled head, simple one-button control, visual status indicator, and dedicated charging base.",
